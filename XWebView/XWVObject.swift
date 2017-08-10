@@ -96,6 +96,9 @@ public class XWVObject : NSObject {
         }
     }
     private func scriptForRetaining(_ script: String) -> String {
+        if origin?.namespace.isEmpty == true {
+            return script
+        }
         guard let origin = origin else { return script }
         return "\(origin.namespace).$retainObject(\(script))"
     }

@@ -87,10 +87,12 @@ public class XWVScriptObject : XWVObject {
         guard let name = name else {
             return namespace
         }
-
+        
         if name.isEmpty {
             return "\(namespace)['']"
-        } else if let idx = Int(name) {
+        }  else if namespace.isEmpty {
+            return name
+        }  else if let idx = Int(name) {
             return "\(namespace)[\(idx)]"
         } else {
             return "\(namespace).\(name)"
